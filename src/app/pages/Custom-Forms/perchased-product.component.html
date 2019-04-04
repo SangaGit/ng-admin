@@ -1,0 +1,100 @@
+<div class="container-fluid" role="tab" id="main">
+  <div class="row bg_header_register text-center p-1">
+    <div class="col-12">
+      <h2 class="text-center">Perchased Products</h2>
+
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-4">
+        <select class="form-control" [(ngModel)]="selectedOption" name="select" size="1" (ngModelChange)="onChange($event)">
+          <option [ngValue]="" disabled>Select Perchased History By</option>
+          <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+        </select>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group row">
+              <label for="from" class="form-control-label col-md-2" style="padding-top: 8px;">From</label>
+              <div class="col-md-10">
+                <input type="date" id="from" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group row">
+              <label for="to" class="form-control-label col-md-2" style="padding-top: 8px;">To</label>
+              <div class="col-md-10">
+                  <input type="date" id="to" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="row">
+              <button type="button" class="btn btn-primary" style="margin-top: 1.4px;"><i class="fa fa-dot-circle-o"></i>Find</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+      </div>
+      
+      
+    </div>
+    <div class="card-block">
+      <table class="table" id="tblPerchasedProduct">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">10/20/2015</th>
+            <td>Perse 4200</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">10/20/2015</th>
+            <td>Laser shield</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">11/15/2015</th>
+            <td>Add-Ons</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+          <tr>
+            <th scope="row">11/15/2015</th>
+            <td>Jhone</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+          <tr>
+            <th scope="row">08/18/2016</th>
+            <td>Micheal</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+          <tr>
+            <th scope="row">05/24/2017</th>
+            <td>Jane</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

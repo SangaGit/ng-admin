@@ -1,0 +1,189 @@
+<div class="animated fadeIn">
+    <h1 class="btn btn-info col-md-12 text-center">Medical Information</h1>
+
+    <form [formGroup]="medicalInfoForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Primary Physician's Name :</label>
+                        <div>
+                            <input type="text" panelId="demo4" id="physicianName" class="form-control" placeholder="Enter Physician's Name" formControlName="physicianName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Primary Physician's Phone Number :</label>
+                        <div>
+                            <input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="physicianPhone" class="form-control" placeholder="Enter Phone Number "
+                                formControlName="physicianPhone">
+                            <div *ngIf="medicalInfoForm.controls['physicianPhone'].hasError('phone') && (medicalInfoForm.controls['physicianPhone'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-4">Preferred hospital :</label>
+                    <div class="col-md-12">
+                        <input class="form-control" type="text" panelId="demo4" id="hospital" placeholder="Enter Preferred Hospital" formControlName="hospital">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Major Health Concerns :</label>
+                        <small>(Please keep breif and summerized.i.e major medications, major allergies, major surgeries, etc.)</small>
+                        <div>
+                            <textarea class="form-control" type="textarea" panelId="demo4" id="mhc" placeholder="Enter Health Concerns" formControlName="mhc"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Special Care Instructions :</label>
+                        <small>(Lock box, DNR, therapy exercises, etc.)</small>
+                        <div>
+                            <textarea class="form-control" type="textarea" panelId="demo4" id="sci" placeholder="Enter Special Core Instructions" formControlName="sci"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+                <div class="well well-sm">
+                    <h4>Responsible Parties : <small style="font-size:9pt !important">(Emergency contacts)</small></h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div><label>Name : <span class="validationrequire"></span></label></div>
+                        <div><input type="text" panelId="demo4" id="rpName1" class="form-control" placeholder="Name" formControlName="rpName1"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpName1'].hasError('required') && (medicalInfoForm.controls['rpName1'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter at least one name.</div>
+                        <div><input type="text" id="rpName2" class="form-control" placeholder="Name" formControlName="rpName2"></div>
+                        <div><input type="text" id="rpName3" class="form-control" placeholder="Name" formControlName="rpName3"></div>
+                        <div><input type="text" id="rpName4" class="form-control" placeholder="Name" formControlName="rpName4"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div><label>Mailling Address : <span class="validationrequire"></span></label></div>
+                        <div><input type="text" panelId="demo4" id="rpMailling1" class="form-control" placeholder="Mailling Address"
+                                formControlName="rpMailling1"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpMailling1'].hasError('required') && (medicalInfoForm.controls['rpMailling1'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter at least one mailling address.</div>
+                        <div><input type="text" panelId="demo4" id="rpMailling2" class="form-control" placeholder="Mailling Address"
+                                formControlName="rpMailling2"></div>
+                        <div><input type="text" panelId="demo4" id="rpMailling3" class="form-control" placeholder="Mailling Address"
+                                formControlName="rpMailling3"></div>
+                        <div><input type="text" panelId="demo4" id="rpMailling4" class="form-control" placeholder="Mailling Address"
+                                formControlName="rpMailling4"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div><label>Phone : <span class="validationrequire"></span></label></div>
+                        <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone1" class="form-control"
+                                placeholder="Phone" formControlName="rpPhone1"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpPhone1'].hasError('required') && (medicalInfoForm.controls['rpPhone1'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter at least one phone number.</div>
+                        <div *ngIf="medicalInfoForm.controls['rpPhone1'].hasError('phone') && medicalInfoForm.controls['rpPhone1'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone2" class="form-control"
+                                placeholder="Phone" formControlName="rpPhone2"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpPhone2'].hasError('phone') && medicalInfoForm.controls['rpPhone2'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="medicalInfoForm" class="form-control"
+                                placeholder="Phone" formControlName="rpPhone3"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpPhone3'].hasError('phone') && medicalInfoForm.controls['rpPhone3'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone4" class="form-control"
+                                placeholder="Phone" formControlName="rpPhone4"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpPhone4'].hasError('phone') && medicalInfoForm.controls['rpPhone4'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div><label>Relationship : <span class="validationrequire"></span></label></div>
+                        <div><input type="text" panelId="demo4" id="rpRelation1" class="form-control" placeholder="Relationship"
+                                formControlName="rpRelation1"></div>
+                        <div *ngIf="medicalInfoForm.controls['rpRelation1'].hasError('required') && (medicalInfoForm.controls['rpRelation1'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter at least one relationship.</div>
+                        <div><input type="text" panelId="demo4" id="rpRelation2" class="form-control" placeholder="Relationship"
+                                formControlName="rpRelation2"></div>
+                        <div><input type="text" panelId="demo4" id="rpRelation3" class="form-control" placeholder="Relationship"
+                                formControlName="rpRelation3"></div>
+                        <div><input type="text" panelId="demo4" id="rpRelation4" class="form-control" placeholder="Relationship"
+                                formControlName="rpRelation4"></div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Spouse Name' :</label>
+                        <div>
+                            <input type="text" panelId="demo4" id="spouseName" class="form-control" placeholder="Enter Spouse Name" formControlName="spouseName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Spouse's Date of Birth :</label>
+                        <div>
+                            <input type="date" panelId="demo4" id="spouseDob" class="form-control" placeholder="Enter Spouse's DOB " formControlName="spouseDob">
+                            <!--<material-datepicker [altInputStyle]="false" class="" panelId="demo4" ([date])="date"></material-datepicker>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+                        <div class="leftbox">
+                            <span class="validationrequire"></span>
+                            <input type="checkbox" panelId="demo4" id="spouseCheckBox" formControlName="spouseCheckBox">
+
+                        </div>
+
+                        <div class="rightbox">
+                            By checking this box and signing below, I agree to the terms and conditions (Click here to read the
+                            <a href="#">Terms and conditions</a> of the LSM Monitoring agreement and monthly monitoring fee)
+                        </div>
+                        <div *ngIf="medicalInfoForm.controls['spouseCheckBox'].hasError('required') && (medicalInfoForm.controls['spouseCheckBox'].touched || submitted)"
+                            class="alert alert-danger">You must agree with our terms and conditions.</div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Signature : <span class="validationrequire"></span></label>
+                        <div>
+                            <input type="text" panelId="demo4" id="spouseSign" class="form-control" placeholder="Enter Signature" formControlName="spouseSign">
+
+                        </div>
+                        <div *ngIf="medicalInfoForm.controls['spouseSign'].hasError('required') && (medicalInfoForm.controls['spouseSign'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter signature.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date Signed :</label>
+                        <div>
+                            <input type="date" panelId="demo4" id="spouseSignDate" class="form-control" placeholder="**/**/****" formControlName="spouseSignDate">
+                            <!--<material-datepicker [altInputStyle]="false" class="" panelId="demo4" ([date])="date"></material-datepicker>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <label>Signature's Full Name :</label>
+                        <div>
+                            <input type="text" panelId="demo4" id="spouseSignFullName" class="form-control" placeholder="Enter Signature's Full Name"
+                                formControlName="spouseSignFullName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </div>
+    </form>
+</div>

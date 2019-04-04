@@ -1,0 +1,9 @@
+input.ng-invalid {
+    border-top: 5px solid red
+}
+input.ng-valid {
+    border-top: 5px solid green
+}
+.ng-untouched{
+  border-top: 5px solid #e1e6ef !important; 
+}

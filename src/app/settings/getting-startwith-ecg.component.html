@@ -1,0 +1,76 @@
+<div class="animated fadeIn">
+    <h1 class="btn  btn-info col-md-12 text-center">Getting Started with ECG</h1>
+    <form [formGroup]="gettingStartEcgForm" novalidate (ngSubmit)="onSubmit()">               
+        <div class="row">
+            <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-block">
+                                    
+                                            <div class="form-group">
+                                                <label for="signature">Signature : <span class="validationrequire"></span></label>
+                                                <input type="text" class="form-control" panelId="demo1" id="signature" placeholder="Enter Signature" formControlName="signature">
+                                                <div *ngIf="gettingStartEcgForm.controls['signature'].hasError('required') && (gettingStartEcgForm.controls['signature'].touched || submitted)" class="col-12 alert alert-danger">You must enter signature.</div>
+                                                <div *ngIf="gettingStartEcgForm.controls['signature'].hasError('pattern') && (gettingStartEcgForm.controls['signature'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="name">Name :</label>
+                                                <input type="text" class="form-control" panelId="demo1" id="name" placeholder="Enter name" formControlName="name">
+                                                <div *ngIf="gettingStartEcgForm.controls['name'].hasError('required') && (gettingStartEcgForm.controls['name'].touched || submitted)" class="col-12 alert alert-danger">You must enter name.</div>
+                                                <div *ngIf="gettingStartEcgForm.controls['name'].hasError('pattern') && (gettingStartEcgForm.controls['name'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="date">Date :</label>
+                                                <input type="date" class="form-control" panelId="demo1" id="date" placeholder="**/**/****" formControlName="date">
+                                                <!--<material-datepicker class="form-control" formControlName="date" [c]="gettingStartEcgForm.controls.date" ngDefaultControl [altInputStyle]="false" class="" panelId="demo1"></material-datepicker>-->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="state">Dealer Sale Type :</label>
+                                                <select class="form-control" panelId="demo1" id="dealerSaleType" name="dealerSaleType" size="1" formControlName="dealerSaleType">
+                                                <option value="" selected>Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                                <div *ngIf="gettingStartEcgForm.controls['dealerSaleType'].hasError('required') && (gettingStartEcgForm.controls['dealerSaleType'].touched || submitted)" class="col-12 alert alert-danger">You must select dealer sale type.</div>
+                                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-block">
+                                            <div class="form-group">
+                                                <label for="dealerid">Dealer ID :(LSM?)</label>
+                                                <input type="text" class="form-control" panelId="demo1" id="dealerid" placeholder="Enter Dealer ID" formControlName="dealerid">
+                                                <div *ngIf="gettingStartEcgForm.controls['dealerid'].hasError('required') && (gettingStartEcgForm.controls['dealerid'].touched || submitted)" class="col-12 alert alert-danger">You must enter dealer id.</div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dealerarea">Dealer Notes :</label>
+                                                <textarea panelId="demo1" id="dealerarea" class="form-control" formControlName="dealerarea"></textarea>
+                                                <div *ngIf="gettingStartEcgForm.controls['dealerarea'].hasError('required') && (gettingStartEcgForm.controls['dealerarea'].touched || submitted)" class="col-12 alert alert-danger">You must enter dealer note.</div>
+                                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <label for="checkbox1">
+                    <input panelId="demo1" id="checkbox1" name="checkbox1" type="checkbox" value="option1">  I Agree the ECG <a href="#">terms and conditions</a> of service
+                </label>
+
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </div>
+    </form>
+</div>

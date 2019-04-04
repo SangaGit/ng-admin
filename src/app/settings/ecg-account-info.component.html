@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+    <h1 class="btn  btn-info col-md-12 text-center">ECG Account Information/Settings</h1>
+
+    <form [formGroup]="accountInfoOrderForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="row"> 
+            <div class="col-md-6">
+                <div class="card">
+                            <div class="card-block">
+                                        <div class="form-group">
+                                            <label class="control-label" for="fname">First Name : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" id="fname" placeholder="Enter your first name" type="text" formControlName="fname" #fname>
+                                            <div *ngIf="accountInfoOrderForm.controls['fname'].hasError('required') && (accountInfoOrderForm.controls['fname'].touched || submitted)" class="col-12 alert alert-danger">You must include a first name.</div>
+                                            <div *ngIf="accountInfoOrderForm.controls['fname'].hasError('pattern') && (accountInfoOrderForm.controls['fname'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                            <!--<div [hidden]="orderForm.controls['fname'].valid || (orderForm.controls['fname'].pristine && !submitted)" class="col-12 alert alert-danger">You must include a first name.</div>-->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" [textMask]="{mask: phoneMask}" id="phone" placeholder="Enter your phone number" type="text" formControlName="phone">
+                                            <div *ngIf="accountInfoOrderForm.controls['phone'].hasError('required') && (accountInfoOrderForm.controls['phone'].touched || submitted)" class="col-12 alert alert-danger">You must include a phone number.</div>
+                                            <div *ngIf="accountInfoOrderForm.controls['phone'].hasError('phone') && accountInfoOrderForm.controls['phone'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state">State : <span class="validationrequire"></span></label>
+                                            <select class="form-control" panelId="demo3" id="state" *ngIf="states" size="1" formControlName="state">
+                                                <option value="" selected>Select state here</option>
+                                                <option *ngFor="let state of states" >{{state}}</option>
+                                            </select>
+
+                                            <div *ngIf="accountInfoOrderForm.controls['state'].hasError('required') && (accountInfoOrderForm.controls['state'].touched || submitted)" class="col-12 alert alert-danger">You must include a state.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zip">ZIP Code : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" id="zip" placeholder="Enter your ZIP code" type="text" formControlName="zip">
+                                            <div *ngIf="accountInfoOrderForm.controls['zip'].hasError('required') && (accountInfoOrderForm.controls['zip'].touched || submitted)" class="col-12 alert alert-danger">You must include a ZIP code.</div>
+                                        </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                        <div class="card-block">                              
+                                        
+                                        <div class="form-group">
+                                            <label for="lname">Last Name : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" id="lname" placeholder="Enter your last name" type="text" formControlName="lname">
+                                            <div *ngIf="accountInfoOrderForm.controls['lname'].hasError('required') && (accountInfoOrderForm.controls['lname'].touched || submitted)" class="col-12 alert alert-danger">You must include a last name.</div>
+                                            <div *ngIf="accountInfoOrderForm.controls['lname'].hasError('pattern') && (accountInfoOrderForm.controls['lname'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" id="email" placeholder="Enter your email address" type="text" formControlName="email">
+                                            <div *ngIf="accountInfoOrderForm.controls['email'].hasError('required') && (accountInfoOrderForm.controls['email'].touched || submitted)" class="col-12 alert alert-danger">You must include a email.</div>
+                                            <div *ngIf="accountInfoOrderForm.controls['email'].hasError('pattern') && accountInfoOrderForm.controls['email'].touched" class="col-12 alert alert-danger">You must include a valid email.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="city">City : <span class="validationrequire"></span></label>
+                                            <input class="form-control" panelId="demo3" id="city" placeholder="Enter your city" type="text" formControlName="city">
+                                            <div *ngIf="accountInfoOrderForm.controls['city'].hasError('required') && (accountInfoOrderForm.controls['city'].touched || submitted)" class="col-12 alert alert-danger">You must include a city.</div>
+                                            <div *ngIf="accountInfoOrderForm.controls['city'].hasError('pattern') && (accountInfoOrderForm.controls['city'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                        </div>
+                        </div>
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-10">
+                <label for="checkbox1">
+                <input panelId="demo3" id="assistanceCheckbox" name="assistanceCheckbox" type="checkbox" formControlName="assistanceCheckbox"> I would like to have an assistance to complete the form.
+                </label>
+                                            <!--<div *ngIf="accountInfoOrderForm.controls['assistanceCheckbox'].hasError('required') && accountInfoOrderForm.controls['assistanceCheckbox'].touched"
+                                                class="col-12 alert alert-danger">You must verify your info.</div>-->
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </div>
+    </form>
+</div>

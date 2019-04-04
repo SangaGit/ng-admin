@@ -1,0 +1,63 @@
+.validationrequire::after{
+  content:"*";
+  color:red;
+}
+.bg_header_register{
+  background-color: #20a8d8;
+  color: white;
+  font-weight: bold;
+
+}
+
+.leftbox{
+  float:left;
+  display: block;
+ width: 3%;
+ padding-top: 5px;
+}
+.rightbox{
+  float:left;
+  width: 95%;
+  display: block;
+}
+
+.group{
+  background-color: lightgray !important;
+}
+
+.expanded-group{
+    background: url(http://findicons.com/files/icons/2338/reflection/128/collapse_alt.png) no-repeat left;
+    padding-left: 50px !important;
+    /* background-position: -19px; */
+    background-size: 30px;
+}
+.collapsed-group{
+      
+
+      background: url(https://www.atauni.edu.tr/kutuphane/galeri/iv-includes/images/mobile/folder_black.png) no-repeat left;
+    padding-left: 50px !important;
+    /* background-position: -19px; */
+    background-size: 30px;
+}
+
+.paginate_button{
+
+      display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease-in-out;
+
+    color: #fff;
+    background-color: #67c2ef;
+    border-color: #f9f9fa;
+}

@@ -1,0 +1,155 @@
+<div class="container-fluid" role="tab" id="main">
+    <div class="row bg_header_register text-center p-1">
+        <div class="col-12">
+            <h2 class="text-center">Confirm Order</h2>
+
+        </div>
+    </div>
+</div>
+<br>
+
+<form [formGroup]="orderconfirmForm" novalidate (ngSubmit)="proceedCheckout()">
+<div class="card container">
+        <div class="card-header card-header-info  block">
+            <h4>  One-Time Charges  </h4>
+        </div>
+    <div class="card-block">
+        <table class="table table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>QTY</th>
+                    <th>Product/Service</th>
+                    <th>Type</th>
+                    <th>Monthly Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" min="0" id="qty0" type="number" formControlName="qty0">
+                    <div *ngIf="orderconfirmForm.controls['qty0'].hasError('required') && (orderconfirmForm.controls['qty0'].touched || submitted)" class="alert alert-danger">Quantity must be add.</div>
+                    <div *ngIf="orderconfirmForm.controls['qty0'].hasError('gt') && (orderconfirmForm.controls['qty0'].touched || submitted)" class="alert alert-danger">Quantity should be positive number.</div>
+                    </th>
+                    <td>Pers 4200 Activation</td>
+                    <td>Package Activation</td>
+                    <td>$25.00</td>
+                </tr>
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" min="0" id="qty1" type="number" formControlName="qty1">
+                    <div *ngIf="orderconfirmForm.controls['qty1'].hasError('required') && (orderconfirmForm.controls['qty1'].touched || submitted)" class="alert alert-danger">Quantity must be add.</div>
+                    <div *ngIf="orderconfirmForm.controls['qty1'].hasError('gt') && (orderconfirmForm.controls['qty1'].touched || submitted)" class="alert alert-danger">Quantity should be positive number.</div>
+                    </th>
+                    <td>ECG-Wrist Pendant</td>
+                    <td>Add-On</td>
+                    <td>$79.99</td>
+                </tr>
+                
+                
+                
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" type="number" min="0" id="qty2" formControlName="qty2">
+                    <div *ngIf="orderconfirmForm.controls['qty2'].hasError('required') && (orderconfirmForm.controls['qty2'].touched || submitted)" class="alert alert-danger">Quantity must be add.</div>
+                    <div *ngIf="orderconfirmForm.controls['qty2'].hasError('gt') && (orderconfirmForm.controls['qty2'].touched || submitted)" class="alert alert-danger">Quantity should be positive number.</div>
+                    </th>
+                    <td>LSI Instant-LSI Zero-Down BSK</td>
+                    <td>LSI Wireless Detection Unit</td>
+                    <td>$50.00</td>
+                </tr>
+                <tr class="bg-warning-fade">
+                    <td colspan="3" class="text-right">Total One-Time Charges</td>
+                    <td>$154.99</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card container">
+        <div class="card-header card-header-info  block">
+            <h4>  Monthly Charges  </h4>
+        </div>
+    <div class="card-block">
+        <table class="table table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>QTY</th>
+                    <th>Product/Service</th>
+                    <th>Package Type</th>
+                    <th>Monthly Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" id="qty3" min="0" type="number" formControlName="qty3">
+                    <div *ngIf="orderconfirmForm.controls['qty3'].hasError('required') && (orderconfirmForm.controls['qty3'].touched || submitted)" class="alert alert-danger">Quantity must be add.</div>
+                    <div *ngIf="orderconfirmForm.controls['qty3'].hasError('gt') && (orderconfirmForm.controls['qty3'].touched || submitted)" class="alert alert-danger">Quantity should be positive number.</div>
+                    </th>
+                    
+                    <td>Pers 4200</td>
+                    <td>ECG Economy-Medical alert base station, pendant, inactivity sensor</td>
+                    <td>$64.95</td>
+                </tr>
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" type="number" value="1"></th>
+                    <td>ECG-Wrist Pendant</td>
+                    <td>Add=On</td>
+                    <td>$79.99</td>
+                </tr>
+                <tr class="">
+                    <th scope="row"><input class="form-control col-sm-4" type="number" value="1"></th>
+                    <td>LSI Instant-LSI Zero-Down BSK</td>
+                    <td>LSI Wireless Detection Unit</td>
+                    <td>$50.00</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="row bg-warning-fade">
+            <div class="col-md-7">
+                <table class="table table-responsive borderless"> 
+                    <tbody>
+                        <tr>
+                            <td> Monthly Fee Discount <br>
+                                <small>Amount deducted from total monthly fee</small>
+                            </td>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Due per Month</td>
+                            <td>$64.95</td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5">
+                <table class="table table-responsive borderless"> 
+                    <tbody>
+                        <tr>
+                            <td> Promo Code
+                            </td>
+                            <td>
+                                <input class="form-control text-center" style="float:left; width:50%;" type="text" placeholder="-Promo Code-">
+                                <button type="button" (click)="discountCheck()" class="btn btn-info" style="float:left;width:50%;">Check Discount</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>NM Tax Only</td>
+                            <td>$0.00</td>
+                        </tr>
+                       <tr>
+                            <td> Promo Savings
+                            </td>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Monitoring Fee</td>
+                            <td>$50.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+<div class="row">
+    <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success">Proceed to checkout</button>
+</div>
+</form>

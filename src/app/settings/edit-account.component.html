@@ -1,0 +1,82 @@
+<!--to check text equality(password $ comfirm password) used 'angular2-text-equality-validator' from npm -->
+<div class="animated fadeIn">
+
+  <h1 class="btn btn-info col-md-12 text-center"> Edit User Account </h1>
+
+  <form [formGroup]="editAccountForm" novalidate (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+          
+              <div class="form-group">
+                <label for="fname">First Name : <span class="validationrequire"></span></label>
+                <input class="form-control" id="fname" placeholder="Enter your first name" type="text" formControlName="fname">
+                <div *ngIf="editAccountForm.controls['fname'].hasError('required') && (editAccountForm.controls['fname'].touched || submitted)" class="col-12 alert alert-danger">You must include a first name.</div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number : <span class="validationrequire"></span></label>
+                <input class="form-control" id="phone" placeholder="Enter your phone number" type="text" formControlName="phone">
+                <div *ngIf="editAccountForm.controls['phone'].hasError('required') && (editAccountForm.controls['phone'].touched || submitted)" class="col-12 alert alert-danger">You must include a phone number.</div>
+                <div *ngIf="editAccountForm.controls['phone'].hasError('phone') && (editAccountForm.controls['phone'].touched || submitted)" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                <div *ngIf="editAccountForm.controls['phone'].hasError('maxlength') && (editAccountForm.controls['phone'].touched || submitted)" class="col-12 alert alert-danger">Your phone number must be 10 characters long.</div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password : <span class="validationrequire"></span></label>
+                <input class="form-control" id="password" placeholder="Enter your password" type="password" formControlName="password">
+                <div *ngIf="editAccountForm.controls['password'].hasError('required') && (editAccountForm.controls['password'].touched || submitted)" class="col-12 alert alert-danger">You must include a password.</div>
+                <div *ngIf="editAccountForm.controls['password'].hasError('minlength') && (editAccountForm.controls['password'].touched || submitted)" class="col-12 alert alert-danger">Your password must be at least 6 characters long.</div>
+              </div>
+              <div class="form-group">
+                <label for="state">State : <span class="validationrequire"></span></label>
+                  <select class="form-control" id="state" *ngIf="states" size="1" formControlName="state">
+                    <option value="" selected>Select state here</option>
+                    <option *ngFor="let state of states" >{{state}}</option>
+                  </select>
+                  <div *ngIf="editAccountForm.controls['state'].hasError('required') && (editAccountForm.controls['state'].touched || submitted)" class="col-12 alert alert-danger">You must include a state.</div>
+              </div>
+              <div class="form-group">
+                <label for="zip">ZIP Code : <span class="validationrequire"></span></label>
+                <input class="form-control" id="zip" placeholder="Enter your ZIP code" type="text" formControlName="zip">
+                <div *ngIf="editAccountForm.controls['zip'].hasError('required') && (editAccountForm.controls['zip'].touched || submitted)" class="col-12 alert alert-danger">You must include a ZIP code.</div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+                <div class="form-group">
+                  <label for="lname">Last Name : <span class="validationrequire"></span></label>
+                  <input class="form-control" id="lname" placeholder="Enter your last name" type="text" formControlName="lname">
+                  <div *ngIf="editAccountForm.controls['lname'].hasError('required') && (editAccountForm.controls['lname'].touched || submitted)" class="col-12 alert alert-danger">You must include a last name.</div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email : <span class="validationrequire"></span></label>
+                  <input class="form-control" id="email" placeholder="Enter your email address" type="text" formControlName="email">
+                  <div *ngIf="editAccountForm.controls['email'].hasError('required') && (editAccountForm.controls['email'].touched || submitted)" class="col-12 alert alert-danger">You must include a email.</div>
+                  <div *ngIf="editAccountForm.controls['email'].hasError('pattern') && (editAccountForm.controls['email'].touched || submitted)" class="col-12 alert alert-danger">You must include a valid email.</div>
+                </div>
+                <div class="form-group">
+                  <label for="cpassword">Confirm Password : <span class="validationrequire"></span></label>
+                  <span></span>
+                  <input class="form-control" id="cpassword" placeholder="Confirm password" type="password" formControlName="cpassword" validateEqualTo="password">
+                  <div *ngIf="editAccountForm.controls['cpassword'].hasError('required') && (editAccountForm.controls['cpassword'].touched || submitted)" class="col-12 alert alert-danger">You must include a same password as above.</div>
+                  <div *ngIf="editAccountForm.controls['cpassword'].hasError('validateEqual') && (editAccountForm.controls['cpassword'].touched || submitted)" class="col-12 alert alert-danger">Passwords don't match</div>
+                </div>
+                <div class="form-group">
+                  <label for="city">City : <span class="validationrequire"></span></label>
+                  <input class="form-control" id="city" placeholder="Enter your city" type="text" formControlName="city">
+                  <div *ngIf="editAccountForm.controls['city'].hasError('required') && (editAccountForm.controls['city'].touched || submitted)" class="col-12 alert alert-danger">You must include a city.</div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-sm col-md-3 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Edit Account</button>
+    </div>
+  </form>
+</div>

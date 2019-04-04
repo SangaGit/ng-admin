@@ -1,0 +1,26 @@
+input.ng-invalid {
+    border-top: 5px solid red;
+}
+input.ng-valid {
+    border-top: 5px solid green;
+}
+.ng-untouched{
+  border-top: 5px solid #e1e6ef !important; 
+}
+.bg_header_register{
+  background-color: #20a8d8;
+  color: white;
+  font-weight: bold;
+
+}
+
+.borderless{
+    border: none !important;
+}
+.borderless td, .borderless th {
+    border: none;
+}
+.bg-warning-fade {
+    color:rgb(51, 51, 51) !important;
+    background-color: rgba(234, 201, 37, 0.68) !important;
+}

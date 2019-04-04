@@ -1,0 +1,1052 @@
+<div class="container-fluid" role="tab" id="main">
+    <div class="row bg_header_register text-center p-1">
+        <div class="col-12">
+            <h2 class="text-center">ECG Order Form</h2>
+
+        </div>
+    </div>
+</div>
+<br>
+<div id="accordion" role="tablist" aria-multiselectable="true">
+    <form [formGroup]="orderForm" novalidate (ngSubmit)="submitForm()">
+
+        <div class="card ">
+            <div class="card-header container block pb-0" role="tab" id="headingMain">
+                <div class="row">
+                    <button type="button" class="btn  btn-info col-md-12 text-left " data-toggle="collapse" data-parent="#accordion" data-target="#demo3"
+                        aria-controls="demo3" aria-expanded="true">ECG Account Information/Settings</button>
+                </div>
+            </div>
+
+            <div id="demo3" class="container collapse show" role="tabpanel" aria-labelledby="headingMain">
+                <div class="card trans">
+                    <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="fname">First Name : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" id="fname" placeholder="Enter your first name" type="text" formControlName="fname">
+                                     <div *ngIf="orderForm.controls['fname'].hasError('required') && (orderForm.controls['fname'].touched || submitted)" class="col-12 alert alert-danger">You must include a first name.</div>
+                                     <div *ngIf="orderForm.controls['fname'].hasError('pattern') && (orderForm.controls['fname'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                    <!--<div [hidden]="orderForm.controls['fname'].valid || (orderForm.controls['fname'].pristine && !submitted)" class="col-12 alert alert-danger">You must include a first name.</div>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" [textMask]="{mask: phoneMask}" id="phone" placeholder="Enter your phone number" type="text" formControlName="phone">
+                                    <div *ngIf="orderForm.controls['phone'].hasError('required') && (orderForm.controls['phone'].touched || submitted)" class="col-12 alert alert-danger">You must include a phone number.</div>
+                                    <div *ngIf="orderForm.controls['phone'].hasError('phone') && orderForm.controls['phone'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State : <span class="validationrequire"></span></label>
+                                    <select class="form-control" panelId="demo3" id="state" *ngIf="states" size="1" formControlName="state">
+                                        <option value="" selected>Select state here</option>
+                                        <option *ngFor="let state of states" >{{state}}</option>
+                                    </select>
+
+                                    <div *ngIf="orderForm.controls['state'].hasError('required') && (orderForm.controls['state'].touched || submitted)" class="col-12 alert alert-danger">You must include a state.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" id="zip" placeholder="Enter your ZIP code" type="text" formControlName="zip">
+                                    <div *ngIf="orderForm.controls['zip'].hasError('required') && (orderForm.controls['zip'].touched || submitted)" class="col-12 alert alert-danger">You must include a ZIP code.</div>
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lname">Last Name : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" id="lname" placeholder="Enter your last name" type="text" formControlName="lname">
+                                    <div *ngIf="orderForm.controls['lname'].hasError('required') && (orderForm.controls['lname'].touched || submitted)" class="col-12 alert alert-danger">You must include a last name.</div>
+                                    <div *ngIf="orderForm.controls['lname'].hasError('pattern') && (orderForm.controls['lname'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" id="email" placeholder="Enter your email address" type="text" formControlName="email">
+                                    <div *ngIf="orderForm.controls['email'].hasError('required') && (orderForm.controls['email'].touched || submitted)" class="col-12 alert alert-danger">You must include a email.</div>
+                                    <div *ngIf="orderForm.controls['email'].hasError('pattern') && orderForm.controls['email'].touched" class="col-12 alert alert-danger">You must include a valid email.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City : <span class="validationrequire"></span></label>
+                                    <input class="form-control" panelId="demo3" id="city" placeholder="Enter your city" type="text" formControlName="city">
+                                    <div *ngIf="orderForm.controls['city'].hasError('required') && (orderForm.controls['city'].touched || submitted)" class="col-12 alert alert-danger">You must include a city.</div>
+                                    <div *ngIf="orderForm.controls['city'].hasError('pattern') && (orderForm.controls['city'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <label for="checkbox1">
+                                        <input panelId="demo3" id="assistanceCheckbox" name="assistanceCheckbox" type="checkbox" formControlName="assistanceCheckbox"> I would like to have an assistance to complete the form.
+                                    </label>
+                                    <!--<div *ngIf="paymentInfoForm.controls['assistanceCheckbox'].hasError('required') && paymentInfoForm.controls['assistanceCheckbox'].touched"
+                                        class="col-12 alert alert-danger">You must verify your info.</div>-->
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card ">
+            <div class="card-header container block pb-0" role="tab" id="headingSix">
+                <div class="row">
+                    <button type="button" class="btn  btn-info col-md-12 text-left collapsed " data-toggle="collapse" data-parent="#accordion" data-target="#demo1"
+                        aria-controls="demo1" aria-expanded="false">Getting Started with ECG</button>
+                </div>
+            </div>
+
+            <div id="demo1" class="container collapse" role="tabpanel" aria-labelledby="headingSix">
+
+                <div class="card">
+
+                    <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="signature">Signature : <span class="validationrequire"></span></label>
+                                        <input type="text" class="form-control" panelId="demo1" id="signature" placeholder="Enter Signature" formControlName="signature">
+                                        <div *ngIf="orderForm.controls['signature'].hasError('required') && (orderForm.controls['signature'].touched || submitted)" class="col-12 alert alert-danger">You must enter signature.</div>
+                                        <div *ngIf="orderForm.controls['signature'].hasError('pattern') && (orderForm.controls['signature'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="name">Name :</label>
+                                        <input type="text" class="form-control" panelId="demo1" id="name" placeholder="Enter name" formControlName="name">
+                                        <div *ngIf="orderForm.controls['name'].hasError('required') && (orderForm.controls['name'].touched || submitted)" class="col-12 alert alert-danger">You must enter name.</div>
+                                        <div *ngIf="orderForm.controls['name'].hasError('pattern') && (orderForm.controls['name'].touched || submitted)" class="col-12 alert alert-danger">You can't use any special charactors or numbers.</div>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="date">Date :</label>
+                                        <input type="date" class="form-control" panelId="demo1" id="date" placeholder="**/**/****" formControlName="date">
+                                        <!--<material-datepicker class="form-control" formControlName="date" [c]="orderForm.controls.date" ngDefaultControl [altInputStyle]="false" class="" panelId="demo1"></material-datepicker>-->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="state">Dealer Sale Type :</label>
+                                        <select class="form-control" panelId="demo1" id="dealerSaleType" name="dealerSaleType" size="1" formControlName="dealerSaleType">
+                                        <option value="" selected>Please select</option>
+                                        <option value="1">Option #1</option>
+                                        <option value="2">Option #2</option>
+                                        <option value="3">Option #3</option>
+                                    </select>
+                                        <div *ngIf="orderForm.controls['dealerSaleType'].hasError('required') && (orderForm.controls['dealerSaleType'].touched || submitted)" class="col-12 alert alert-danger">You must select dealer sale type.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dealerid">Dealer ID :(LSM?)</label>
+                                        <input type="text" class="form-control" panelId="demo1" id="dealerid" placeholder="Enter Dealer ID" formControlName="dealerid">
+                                        <div *ngIf="orderForm.controls['dealerid'].hasError('required') && (orderForm.controls['dealerid'].touched || submitted)" class="col-12 alert alert-danger">You must enter dealer id.</div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dealerarea">Dealer Notes :</label>
+                                        <textarea panelId="demo1" id="dealerarea" class="form-control" formControlName="dealerarea"></textarea>
+                                        <div *ngIf="orderForm.controls['dealerarea'].hasError('required') && (orderForm.controls['dealerarea'].touched || submitted)" class="col-12 alert alert-danger">You must enter dealer note.</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                    <div class="checkbox col-md-4">
+                        <label for="checkbox1">
+                            <input panelId="demo1" id="checkbox1" name="checkbox1" type="checkbox" value="option1">  I Agree the ECG <a href="#">terms and conditions</a> of service
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header container block pb-0" role="tab" id="headingOne">
+                <div class="row">
+                    <!--<div class="col-md-3"></div>-->
+                    <button type="button" class="btn  btn-info col-md-12 text-left collapsed " data-toggle="collapse" data-parent="#accordion"
+                        data-target="#demo2" aria-controls="demo2" aria-expanded="false">Subscriber's Information/Monitoring Information</button>
+
+                </div>
+            </div>
+
+            <div id="demo2" class="container collapse" role="tabpanel" aria-labelledby="headingOne">
+
+                <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Dealer ID :</label>
+                                    <div>
+                                        <input type="text" panelId="demo2" id="dealerid" class="form-control" placeholder="Dealer ID" formControlName="subscriberdealerid">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Account Type :</label>
+                                    <div>
+                                        <select class="form-control" panelId="demo2" id="accTypSelect" name="select" size="1" formControlName="accTypSelect">
+                                        <option value="" selected>Account Type</option>
+                                        <option>Type 1</option>
+                                        <option>Type 2</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>XMIT ID :</label>
+                                    <div>
+                                        <input type="text" class="form-control" panelId="demo2" id="xmid" placeholder="XMIT ID " formControlName="xmid">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>ORB ID : <small> (Leave blank if unknown)</small></label>
+                                    <div>
+                                        <input type="text" class="form-control" panelId="demo2" id="orbid" placeholder="ORB ID" formControlName="orbid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>First Name : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="subscriberfname" placeholder="First Name" formControlName="subscriberfname">
+                                        <div *ngIf="orderForm.controls['subscriberfname'].hasError('required') && (orderForm.controls['subscriberfname'].touched || submitted)" class="col-12 alert alert-danger">You must enter first name.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Last Name : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="subscriberlname" placeholder="Last Name" formControlName="subscriberlname">
+                                        <div *ngIf="orderForm.controls['subscriberlname'].hasError('required') && (orderForm.controls['subscriberlname'].touched || submitted)" class="col-12 alert alert-danger">You must enter last name.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="email" panelId="demo2" id="subscriberemail" placeholder="Enter Email" formControlName="subscriberemail">
+                                        <div *ngIf="orderForm.controls['subscriberemail'].hasError('required') && (orderForm.controls['subscriberemail'].touched || submitted)" class="col-12 alert alert-danger">You must enter email.</div>
+                                        <div *ngIf="orderForm.controls['subscriberemail'].hasError('pattern') && orderForm.controls['subscriberemail'].touched" class="col-12 alert alert-danger">You must enter valid email.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Date Of Birth : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="date" panelId="demo2" id="dob" placeholder="**/**/****" formControlName="dob">
+                                        <!--<material-datepicker [altInputStyle]="false" formControlName="dob" [c]="orderForm.controls.dob" (onSelect)="onSelect($event)" ngDefaultControl class="" panelId="demo2"></material-datepicker>-->
+                                        <div *ngIf="orderForm.controls['dob'].hasError('required') && (orderForm.controls['dob'].touched || submitted)" class="col-12 alert alert-danger">You must select date of birth.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Primary Phone Number : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="pno" placeholder="Enter Phone Number" formControlName="pno">
+                                        <div *ngIf="orderForm.controls['pno'].hasError('required') && (orderForm.controls['pno'].touched || submitted)" class="col-12 alert alert-danger">You must enter phone number.</div>
+                                        <div *ngIf="orderForm.controls['pno'].hasError('phone') && orderForm.controls['pno'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Secondary Phone Number :</label>
+                                    <div>
+                                        <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="spno" placeholder="Enter Phone Number" formControlName="spno">
+                                        <div *ngIf="orderForm.controls['spno'].hasError('phone') && (orderForm.controls['spno'].touched || submitted)" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Time Zone : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <select class="form-control" panelId="demo2" id="timeZone" name="select" size="1" formControlName="timeZone">
+                                        
+                                        <option>Central</option>
+                                        <option>5.00+</option>
+                                        <option>5.30+</option>
+                                    </select>
+                                    </div>
+                                    <div *ngIf="orderForm.controls['timeZone'].hasError('required') && (orderForm.controls['timeZone'].touched || submitted)"
+                                        class="col-12 alert alert-danger">You must select time zone.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Physical Address : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="physicalAddress" placeholder="Enter Address" formControlName="physicalAddress">
+                                        <div *ngIf="orderForm.controls['physicalAddress'].hasError('required') && (orderForm.controls['physicalAddress'].touched || submitted)"
+                                            class="col-12 alert alert-danger">You must enter physical address.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>APT/UNIT# :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="subAptUnit" placeholder="" formControlName="subAptUnit">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>State : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <select class="form-control" panelId="demo2" id="subState" name="select" size="1" formControlName="subState">
+                                        <option>Arizona</option>
+                                        <option>New York</option>
+                                        <option>Los Angeles</option>
+                                    </select>
+                                    </div>
+                                    <div *ngIf="orderForm.controls['subState'].hasError('required') && (orderForm.controls['subState'].touched || submitted)"
+                                        class="col-12 alert alert-danger">You must select state.</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>City : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="subCity" placeholder="Enter City Name" formControlName="subCity">
+                                        <div *ngIf="orderForm.controls['subCity'].hasError('required') && (orderForm.controls['subCity'].touched || submitted)"
+                                            class="col-12 alert alert-danger">You must enter city.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Zip Code : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo2" id="subZip" placeholder="Enter Zip Code" formControlName="subZip">
+                                        <div *ngIf="orderForm.controls['subZip'].hasError('required') && (orderForm.controls['subZip'].touched || submitted)"
+                                            class="col-12 alert alert-danger">You must enter zip.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <h4>Setup Information :</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Setup/Installation Type : </label>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="setupType" name="select" size="1" formControlName="setupType">
+                                        <option>Other </option>
+                                        <option>Example 1</option>
+                                        <option>Example 2</option>
+                                    </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Name of Person doing Setup :</label>
+                                            <div>
+                                                <input class="form-control" type="text" panelId="demo2" id="setupPersonName" placeholder="Enter Person Name" formControlName="setupPersonName">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Phone Number :</label>
+                                            <div>
+                                                <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="setupPersonPhone" placeholder="Enter phone number" formControlName="setupPersonPhone">
+                                                <div *ngIf="orderForm.controls['setupPersonPhone'].hasError('phone') && (orderForm.controls['setupPersonPhone'].touched || submitted)" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <h4>Phone Connection Information :</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Standard Phone Line? : <span class="validationrequire"></span></label>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="standardPhoneLine" name="standardPhoneLine" size="1" formControlName="standardPhoneLine">
+                                                    <option value="" selected>Select Phone Line</option>
+                                                    <option>Example 1</option>
+                                                    <option>Example 2</option>
+                                            </select>
+                                            </div>
+                                            <div *ngIf="orderForm.controls['standardPhoneLine'].hasError('required') && (orderForm.controls['standardPhoneLine'].touched || submitted)"
+                                                class="col-12 alert alert-danger">You must select phone line.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label>DSL? :</label>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="dsl" name="dsl" size="1" formControlName="dsl">
+                                                    <option value="" selected>Select Phone Line</option>
+                                                    <option>Example 1</option>
+                                                    <option>Example 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone Service Provider : </label>
+                                            <div>
+                                                <input class="form-control" type="text" panelId="demo2" id="phoneServiceProvider" placeholder="Enter Service Provider" formControlName="phoneServiceProvider">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <h4>Medication Reminder Times : <small style="font-size:9pt !important">(optional)-Program up to 8 daily times for medication reminders</small> </h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt1" name="mrt1" size="1" formControlName="mrt1">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt2" name="mrt2" size="1" formControlName="mrt2">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt3" name="mrt3" size="1" formControlName="mrt3">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt4" name="mrt4" size="1" formControlName="mrt4">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt5" name="mrt5" size="1" formControlName="mrt5">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt6" name="mrt6" size="1" formControlName="mrt6">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt7" name="mrt7" size="1" formControlName="mrt7">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <input class="form-control" type="time">
+                                            </div>
+                                            <div>
+                                                <select class="form-control" panelId="demo2" id="mrt8" name="mrt8" size="1" formControlName="mrt8">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <h4>InActivity Sensor Settings : <small style="font-size: 9pt">Inactivity will be set for two times of windows</small></h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkbox">
+                                                <label for="checkbox1">
+                                        <input name="issCheckBox1" panelId="demo2" id="issCheckBox1" type="checkbox" value="option1" formControlName="issCheckBox1"> Standard (5am to 10am AND 5pm to 10pm)
+                                        </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkbox">
+                                                <label for="checkbox2">
+                                        <input panelId="demo2" id="issCheckBox2" name="issCheckBox2" type="checkbox" value="option2" formControlName="issCheckBox2"> Custom
+                                        </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-5"><input type="time" panelId="demo2" id="issAm1" class="form-control" placeholder="12.10" formControlName="issAm1"></div>
+                                        <div class="col-md-1"><label>AM to</label></div>
+                                        <div class="col-md-5"><input type="time" panelId="demo2" id="issAm2" class="form-control" placeholder="12.10" formControlName="issAm2"></div>
+                                        <div class="col-md-1"><label>AM</label></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-5"><input type="time" panelId="demo2" id="issPm1" class="form-control" placeholder="12.10" formControlName="issPm1"></div>
+                                        <div class="col-md-1"><label>PM to</label></div>
+                                        <div class="col-md-5"><input type="time" panelId="demo2" id="issPm2" class="form-control" placeholder="12.10" formControlName="issPm2"></div>
+                                        <div class="col-md-1"><label>PM</label></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header container block pb-0 " role="tab" id="headingTwo">
+                <div class="row">
+                    <!--<div class="col-md-3"></div>-->
+                    <button type="button" class="btn btn-info col-md-12 text-left collapsed" data-toggle="collapse" data-parent="#accordion"
+                        data-target="#demo4" aria-controls="demo4" aria-expanded="false">Medical Information</button>
+                </div>
+            </div>
+
+            <div id="demo4" class="container collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+                <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Primary Physician's Name :</label>
+                                    <div>
+                                        <input type="text" panelId="demo4" id="physicianName" class="form-control" placeholder="Enter Physician's Name" formControlName="physicianName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Primary Physician's Phone Number :</label>
+                                    <div>
+                                        <input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="physicianPhone" class="form-control" placeholder="Enter Phone Number " formControlName="physicianPhone">
+                                        <div *ngIf="orderForm.controls['physicianPhone'].hasError('phone') && (orderForm.controls['physicianPhone'].touched || submitted)" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-4">Preferred hospital :</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" panelId="demo4" id="hospital" placeholder="Enter Preferred Hospital" formControlName="hospital">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Major Health Concerns :</label>
+                                    <small>(Please keep breif and summerized.i.e major medications, major allergies, major surgeries, etc.)</small>
+                                    <div>
+                                        <textarea class="form-control" type="textarea" panelId="demo4" id="mhc" placeholder="Enter Health Concerns" formControlName="mhc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Special Care Instructions :</label>
+                                    <small>(Lock box, DNR, therapy exercises, etc.)</small>
+                                    <div>
+                                        <textarea class="form-control" type="textarea" panelId="demo4" id="sci" placeholder="Enter Special Core Instructions" formControlName="sci"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="well well-sm">
+                                        <h4>Responsible Parties : <small style="font-size:9pt !important">(Emergency contacts)</small></h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div><label>Name : <span class="validationrequire"></span></label></div>
+                                            <div><input type="text" panelId="demo4" id="rpName1" class="form-control" placeholder="Name" formControlName="rpName1"></div>
+                                            <div *ngIf="orderForm.controls['rpName1'].hasError('required') && (orderForm.controls['rpName1'].touched || submitted)" class="col-12 alert alert-danger">You must enter at least one name.</div>
+                                            <div><input type="text" id="rpName2" class="form-control" placeholder="Name" formControlName="rpName2"></div>
+                                            <div><input type="text" id="rpName3" class="form-control" placeholder="Name" formControlName="rpName3"></div>
+                                            <div><input type="text" id="rpName4" class="form-control" placeholder="Name" formControlName="rpName4"></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div><label>Mailling Address : <span class="validationrequire"></span></label></div>
+                                            <div><input type="text" panelId="demo4" id="rpMailling1" class="form-control" placeholder="Mailling Address"
+                                                    formControlName="rpMailling1"></div>
+                                            <div *ngIf="orderForm.controls['rpMailling1'].hasError('required') && (orderForm.controls['rpMailling1'].touched || submitted)"
+                                                class="col-12 alert alert-danger">You must enter at least one mailling address.</div>
+                                            <div><input type="text" panelId="demo4" id="rpMailling2" class="form-control" placeholder="Mailling Address" formControlName="rpMailling2"></div>
+                                            <div><input type="text" panelId="demo4" id="rpMailling3" class="form-control" placeholder="Mailling Address" formControlName="rpMailling3"></div>
+                                            <div><input type="text" panelId="demo4" id="rpMailling4" class="form-control" placeholder="Mailling Address" formControlName="rpMailling4"></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div><label>Phone : <span class="validationrequire"></span></label></div>
+                                            <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone1" class="form-control" placeholder="Phone" formControlName="rpPhone1"></div>
+                                            <div *ngIf="orderForm.controls['rpPhone1'].hasError('required') && (orderForm.controls['rpPhone1'].touched || submitted)" class="col-12 alert alert-danger">You must enter at least one phone number.</div>
+                                            <div *ngIf="orderForm.controls['rpPhone1'].hasError('phone') && orderForm.controls['rpPhone1'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                            <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone2" class="form-control" placeholder="Phone" formControlName="rpPhone2"></div>
+                                            <div *ngIf="orderForm.controls['rpPhone2'].hasError('phone') && orderForm.controls['rpPhone2'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                            <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone3" class="form-control" placeholder="Phone" formControlName="rpPhone3"></div>
+                                            <div *ngIf="orderForm.controls['rpPhone3'].hasError('phone') && orderForm.controls['rpPhone3'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                            <div><input type="text" [textMask]="{mask: phoneMask}" panelId="demo4" id="rpPhone4" class="form-control" placeholder="Phone" formControlName="rpPhone4"></div>
+                                            <div *ngIf="orderForm.controls['rpPhone4'].hasError('phone') && orderForm.controls['rpPhone4'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div><label>Relationship : <span class="validationrequire"></span></label></div>
+                                            <div><input type="text" panelId="demo4" id="rpRelation1" class="form-control" placeholder="Relationship"
+                                                    formControlName="rpRelation1"></div>
+                                            <div *ngIf="orderForm.controls['rpRelation1'].hasError('required') && (orderForm.controls['rpRelation1'].touched || submitted)"
+                                                class="col-12 alert alert-danger">You must enter at least one relationship.</div>
+                                            <div><input type="text" panelId="demo4" id="rpRelation2" class="form-control" placeholder="Relationship" formControlName="rpRelation2"></div>
+                                            <div><input type="text" panelId="demo4" id="rpRelation3" class="form-control" placeholder="Relationship" formControlName="rpRelation3"></div>
+                                            <div><input type="text" panelId="demo4" id="rpRelation4" class="form-control" placeholder="Relationship" formControlName="rpRelation4"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Spouse Name' :</label>
+                                            <div>
+                                                <input type="text" panelId="demo4" id="spouseName" class="form-control" placeholder="Enter Spouse Name" formControlName="spouseName">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Spouse's Date of Birth :</label>
+                                            <div>
+                                                <input type="date" panelId="demo4" id="spouseDob" class="form-control" placeholder="Enter Spouse's DOB " formControlName="spouseDob">
+                                                <!--<material-datepicker [altInputStyle]="false" class="" panelId="demo4" ([date])="date"></material-datepicker>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+
+
+                                            <div class="leftbox">
+                                                <span class="validationrequire"></span>
+                                                <input type="checkbox" panelId="demo4" id="spouseCheckBox" formControlName="spouseCheckBox">
+
+                                            </div>
+
+                                            <div class="rightbox">
+                                                By checking this box and signing below, I agree to the terms and conditions (Click here to read the
+                                                <a href="#">Terms and conditions</a> of the LSM Monitoring agreement and monthly monitoring fee)
+                                            </div>
+                                            <div *ngIf="orderForm.controls['spouseCheckBox'].hasError('required') && (orderForm.controls['spouseCheckBox'].touched || submitted)"
+                                                class="alert alert-danger">You must agree with our terms and conditions.</div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Signature : <span class="validationrequire"></span></label>
+                                            <div>
+                                                <input type="text" panelId="demo4" id="spouseSign" class="form-control" placeholder="Enter Signature" formControlName="spouseSign">
+
+                                            </div>
+                                            <div *ngIf="orderForm.controls['spouseSign'].hasError('required') && (orderForm.controls['spouseSign'].touched || submitted)"
+                                                class="col-12 alert alert-danger">You must enter signature.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Date Signed :</label>
+                                            <div>
+                                                <input type="date" panelId="demo4" id="spouseSignDate" class="form-control" placeholder="**/**/****" formControlName="spouseSignDate">
+                                                <!--<material-datepicker [altInputStyle]="false" class="" panelId="demo4" ([date])="date"></material-datepicker>-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <label>Signature's Full Name :</label>
+                                            <div>
+                                                <input type="text" panelId="demo4" id="spouseSignFullName" class="form-control" placeholder="Enter Signature's Full Name" formControlName="spouseSignFullName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header container block pb-0" role="tab" id="headingThree">
+                <div class="row">
+                    <!--<div class="col-md-3"></div>-->
+                    <button type="button" class="btn btn-info col-md-12 text-left collapsed" data-toggle="collapse" data-parent="#accordion"
+                        data-target="#demo6" aria-controls="demo6" aria-expanded="false">Billing Information</button>
+                </div>
+            </div>
+
+            <div id="demo6" class="container collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-6">Select/Add Billing Address</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Select Billing Address :</label>
+                                    <div>
+                                        <select class="form-control" panelId="demo6" id="billAddress" name="billAddress" size="1" formControlName="billAddress">
+                                                <option selected value="">Select Billing Address</option>
+                                                <option>ECG Account Information Address</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Physical Address :</label>
+                                    <div>
+                                        <input class="form-control" panelId="demo6" id="billPhysicalAddress" type="text" placeholder="Enter Address" formControlName="billPhysicalAddress">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>APT/Unit# :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo6" id="billAptUnit" placeholder="Enter APT/Unit" formControlName="billAptUnit">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Billing Phone Number : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo6" id="billPhone" placeholder="Enter Phone" formControlName="billPhone">
+                                    </div>
+                                    <div *ngIf="orderForm.controls['billPhone'].hasError('required') && (orderForm.controls['billPhone'].touched || submitted)" class="col-12 alert alert-danger">You must enter phone number.</div>
+                                    <div *ngIf="orderForm.controls['billPhone'].hasError('phone') && orderForm.controls['billPhone'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>City :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo6" id="billCity" placeholder="Enter City" formControlName="billCity">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>State :</label>
+                                    <div>
+                                        <div>
+                                            <select class="form-control" panelId="demo6" id="billState" name="billState" size="1" formControlName="billState">
+                                                <option selected value="">Select State</option>
+                                                <option>Arizona</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ZipCode :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo6" id="billZip" placeholder="Enter Zip" formControlName="billZip">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header container block pb-0" role="tab" id="headingFour">
+                <div class="row">
+                    <!--<div class="col-md-3"></div>-->
+                    <button type="button" class="btn btn-info col-md-12 text-left collapsed" data-toggle="collapse" data-parent="#accordion"
+                        data-target="#demo7" aria-controls="demo7" aria-expanded="false">Delivery Information</button>
+                </div>
+            </div>
+
+            <div id="demo7" class="container collapse" role="tabpanel" aria-labelledby="headingFour">
+
+                <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-6">Select/Add Delivery Information</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Select Delevery Address :</label>
+                                    <div>
+                                        <select class="form-control" panelId="demo7" id="deliveryBillAddress" name="deliveryBillAddress" size="1" formControlName="deliveryBillAddress">
+                                                <option value="" selected>Add New Billing Address</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Delivery Address : <small>(Where to mail the system)</small></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo7" id="deliveryAddress" placeholder="Enter Address" formControlName="deliveryAddress">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>APT/Unit# :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo7" id="deliveryApiUnit" placeholder="Enter Unit Number" formControlName="deliveryApiUnit">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>City :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo7" id="deliveryCity" placeholder="Enter City" formControlName="deliveryCity">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>State :</label>
+                                    <div>
+                                        <select class="form-control" panelId="demo7" id="deliveryState" name="deliveryState" size="1" formControlName="deliveryState">
+                                                <option value="" selected>Please Select State</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Zip Code :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo7" id="deliveryZip" placeholder="Enter Zip Code" formControlName="deliveryZip">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Package Recipient Name : <span class="validationrequire"></span><small>(Anticipated recipient of package)</small></label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo7" id="packageReciptName" placeholder="Enter Recipient Name" formControlName="packageReciptName">
+                                    </div>
+                                    <div *ngIf="orderForm.controls['packageReciptName'].hasError('required') && (orderForm.controls['packageReciptName'].touched || submitted)"
+                                        class="col-12 alert alert-danger">You must enter recipient name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Package Recipient Phone : <span class="validationrequire"></span></label>
+                                    <div>
+                                        <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo7" id="packageReciptPhone" placeholder="Enter Recipient Phone" formControlName="packageReciptPhone">
+                                    </div>
+                                    <div *ngIf="orderForm.controls['packageReciptPhone'].hasError('required') && (orderForm.controls['packageReciptPhone'].touched || submitted)" class="col-12 alert alert-danger">You must enter recipient phone number.</div>
+                                    <div *ngIf="orderForm.controls['packageReciptPhone'].hasError('phone') && orderForm.controls['packageReciptPhone'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header container block pb-0" role="tab" id="headingFive">
+                <div class="row">
+                    <!--<div class="col-md-3"></div>-->
+                    <button type="button" class="btn btn-info col-md-12 text-left collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#demo8"
+                        aria-expanded="false" aria-controls="demo8">Payment Information</button>
+                </div>
+            </div>
+
+            <div id="demo8" class="container collapse" role="tabpanel" aria-labelledby="headingFive">
+
+                <div class="card">
+                        <div class="card-block">
+
+                            <div style="margin: 20px" class="row">
+                                <p>How would you like to pay?(Choose a method pay for your monthly service. If you order extra equipment,
+                                    Please indicate how you wish to pay for the accessories)</p>
+                            </div>
+
+                            <div class="row">
+                                <div >
+                                    <input type="checkbox" panelId="demo8" id="invoiceOnlyCheckBox" formControlName="invoiceOnlyCheckBox"> Invoice
+                                    Only/Bill Me(Not Recommended) : <small> Use only if you want to mail in a check after receiving a bill</small>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">Select/Add Payment</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Please select Payment Option :</label>
+                                    <div>
+                                        <select class="form-control" panelId="demo8" id="paymentOption" name="paymentOption" size="1" formControlName="paymentOption">
+                                                <option value="" selected>Add New Payment Method</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Payment Name :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo8" id="paymentName" placeholder="Enter Payment Name" formControlName="paymentName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Payment Type :</label>
+                                    <div>
+                                        <div>
+                                            <select class="form-control" panelId="demo8" id="paymentType" name="paymentType" size="1" formControlName="paymentType">
+                                                <option value="" selected>-Select Payment Type</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+
+                                <div class="col-md-3"><input type="checkbox" panelId="demo8" id="visaCheckBox" formControlName="visaCheckBox"> <img src="http://www.credit-card-logos.com/images/visa_credit-card-logos/visa_logo_6.gif"
+                                        style="width:80px;height:50px;"><b> Visa</b></div>
+                                <div class="col-md-3"><input type="checkbox" panelId="demo8" id="masterCheckBox" formControlName="masterCheckBox"> <img src="https://gambiabeat.files.wordpress.com/2014/07/mastercard.gif"
+                                        style="width:80px;height:50px;"><b> Master</b></div>
+                                <div class="col-md-3"><input type="checkbox" panelId="demo8" id="discoverCheckBox" formControlName="discoverCheckBox"> <img src="http://rt2qxflpae-flywheel.netdna-ssl.com/wp-content/uploads/2012/09/discover-card.jpg"
+                                        style="width:80px;height:50px;"><b> Discover</b></div>
+                                <div class="col-md-3"><input type="checkbox" panelId="demo8" id="americanExpCheckBox" formControlName="americanExpCheckBox"> <img src="http://www.sucursales.com.mx/wp-content/uploads/2014/01/amex-logo.jpg"
+                                        style="width:80px;height:50px;"><b> Amer Exp</b></div>
+
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div><label>Credit Card Number:</label></div>
+                                    <div><input type="text"  [textMask]="{mask: ccnMask}" panelId="demo8" id="creditCardNumber" class="form-control" placeholder="Enter Credit Card Number" formControlName="creditCardNumber"></div>
+                                    <div *ngIf="orderForm.controls['creditCardNumber'].hasError('creditCard') && orderForm.controls['creditCardNumber'].touched" class="col-12 alert alert-danger">Your must enter valid credit card number.</div>
+                                    <!--<div *ngIf="paymentInfoForm.controls['creditCardNumber'].hasError('number') && paymentInfoForm.controls['creditCardNumber'].touched" class="col-12 alert alert-danger">Your must enter valid credit card number.</div>-->
+                                </div>
+                                <div class="col-md-4">
+                                    <div><label>Exp Date :</label></div>
+                                    <div><input type="text" [textMask]="{mask: expMask}" panelId="demo8" id="creditCardExpDate" class="form-control" placeholder="Month/Year" formControlName="creditCardExpDate"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div><label>CSV :</label></div>
+                                    <div><input type="text" [textMask]="{mask: csvMask}" panelId="demo8" id="creditCardCsv" class="form-control" placeholder="CSV" formControlName="creditCardCsv"></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name as it appears on card :</label>
+                                    <div>
+                                        <input class="form-control" type="text" panelId="demo8" id="creditCardName" placeholder="Enter Name" formControlName="creditCardName">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <span class="validationrequire"></span>
+                                    <label for="checkbox1">
+                                        <input panelId="demo8" id="verifyBillingCheckbox" name="verifyBillingCheckbox" type="checkbox" formControlName="verifyBillingCheckbox"> I have verified my billing address and phone here and made
+                                        any changes necessary. My billing information is current and correct.
+                                    </label>
+                                    <div *ngIf="orderForm.controls['verifyBillingCheckbox'].hasError('required') && (orderForm.controls['verifyBillingCheckbox'].touched || submitted)"
+                                        class="col-12 alert alert-danger">You must verify your info.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-sm col-md-2 m-auto btn-block btn-success" type="submit">Proceed to ckeckout</button>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,421 @@
+<div class="animated fadeIn">
+    <h1 class="btn  btn-info col-md-12 text-center">Subscriber's Information/Monitoring Information</h1>
+
+    <form [formGroup]="subscriberInfoForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Dealer ID :</label>
+                            <div>
+                                <input type="text" panelId="demo2" id="dealerid" class="form-control" placeholder="Dealer ID" formControlName="subscriberdealerid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Account Type :</label>
+                            <div>
+                                <select class="form-control" panelId="demo2" id="accTypSelect" name="select" size="1" formControlName="accTypSelect">
+                                            <option value="" selected>Account Type</option>
+                                            <option>Type 1</option>
+                                            <option>Type 2</option>
+                                        </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>XMIT ID :</label>
+                            <div>
+                                <input type="text" class="form-control" panelId="demo2" id="xmid" placeholder="XMIT ID " formControlName="xmid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>ORB ID : <small> (Leave blank if unknown)</small></label>
+                            <div>
+                                <input type="text" class="form-control" panelId="demo2" id="orbid" placeholder="ORB ID" formControlName="orbid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>First Name : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="subscriberfname" placeholder="First Name" formControlName="subscriberfname">
+                            <div *ngIf="subscriberInfoForm.controls['subscriberfname'].hasError('required') && (subscriberInfoForm.controls['subscriberfname'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter first name.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="subscriberlname" placeholder="Last Name" formControlName="subscriberlname">
+                            <div *ngIf="subscriberInfoForm.controls['subscriberlname'].hasError('required') && (subscriberInfoForm.controls['subscriberlname'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter last name.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Email : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="email" panelId="demo2" id="subscriberemail" placeholder="Enter Email" formControlName="subscriberemail">
+                            <div *ngIf="subscriberInfoForm.controls['subscriberemail'].hasError('required') && (subscriberInfoForm.controls['subscriberemail'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter email.</div>
+                            <div *ngIf="subscriberInfoForm.controls['subscriberemail'].hasError('pattern') && subscriberInfoForm.controls['subscriberemail'].touched"
+                                class="col-12 alert alert-danger">You must enter valid email.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date Of Birth : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="date" panelId="demo2" id="dob" placeholder="**/**/****" formControlName="dob">
+                            <!--<material-datepicker [altInputStyle]="false" formControlName="dob" [c]="subscriberInfoForm.controls.dob" (onSelect)="onSelect($event)" ngDefaultControl class="" panelId="demo2"></material-datepicker>-->
+                            <div *ngIf="subscriberInfoForm.controls['dob'].hasError('required') && (subscriberInfoForm.controls['dob'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must select date of birth.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Primary Phone Number : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="pno" placeholder="Enter Phone Number"
+                                formControlName="pno">
+                            <div *ngIf="subscriberInfoForm.controls['pno'].hasError('required') && (subscriberInfoForm.controls['pno'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter phone number.</div>
+                            <div *ngIf="subscriberInfoForm.controls['pno'].hasError('phone') && subscriberInfoForm.controls['pno'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Secondary Phone Number :</label>
+                        <div>
+                            <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="spno" placeholder="Enter Phone Number"
+                                formControlName="spno">
+                            <div *ngIf="subscriberInfoForm.controls['spno'].hasError('phone') && (subscriberInfoForm.controls['spno'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Time Zone : <span class="validationrequire"></span></label>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="timeZone" name="select" size="1" formControlName="timeZone">
+                                        
+                                        <option>Central</option>
+                                        <option>5.00+</option>
+                                        <option>5.30+</option>
+                                    </select>
+                        </div>
+                        <div *ngIf="subscriberInfoForm.controls['timeZone'].hasError('required') && (subscriberInfoForm.controls['timeZone'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must select time zone.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Physical Address : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="physicalAddress" placeholder="Enter Address" formControlName="physicalAddress">
+                            <div *ngIf="subscriberInfoForm.controls['physicalAddress'].hasError('required') && (subscriberInfoForm.controls['physicalAddress'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter physical address.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>APT/UNIT# :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="subAptUnit" placeholder="" formControlName="subAptUnit">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>State : <span class="validationrequire"></span></label>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="subState" name="select" size="1" formControlName="subState">
+                                        <option>Arizona</option>
+                                        <option>New York</option>
+                                        <option>Los Angeles</option>
+                                    </select>
+                        </div>
+                        <div *ngIf="subscriberInfoForm.controls['subState'].hasError('required') && (subscriberInfoForm.controls['subState'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must select state.</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>City : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="subCity" placeholder="Enter City Name" formControlName="subCity">
+                            <div *ngIf="subscriberInfoForm.controls['subCity'].hasError('required') && (subscriberInfoForm.controls['subCity'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter city.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Zip Code : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="subZip" placeholder="Enter Zip Code" formControlName="subZip">
+                            <div *ngIf="subscriberInfoForm.controls['subZip'].hasError('required') && (subscriberInfoForm.controls['subZip'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must enter zip.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+
+                <div class="row">
+                    <h4>Setup Information :</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Setup/Installation Type : </label>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="setupType" name="select" size="1" formControlName="setupType">
+                                        <option>Other </option>
+                                        <option>Example 1</option>
+                                        <option>Example 2</option>
+                                    </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Name of Person doing Setup :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="setupPersonName" placeholder="Enter Person Name" formControlName="setupPersonName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone Number :</label>
+                        <div>
+                            <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo2" id="setupPersonPhone" placeholder="Enter phone number"
+                                formControlName="setupPersonPhone">
+                            <div *ngIf="subscriberInfoForm.controls['setupPersonPhone'].hasError('phone') && (subscriberInfoForm.controls['setupPersonPhone'].touched || submitted)"
+                                class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+
+                <div class="row">
+                    <h4>Phone Connection Information :</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Standard Phone Line? : <span class="validationrequire"></span></label>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="standardPhoneLine" name="standardPhoneLine" size="1" formControlName="standardPhoneLine">
+                                                    <option value="" selected>Select Phone Line</option>
+                                                    <option>Example 1</option>
+                                                    <option>Example 2</option>
+                                            </select>
+                        </div>
+                        <div *ngIf="subscriberInfoForm.controls['standardPhoneLine'].hasError('required') && (subscriberInfoForm.controls['standardPhoneLine'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must select phone line.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>DSL? :</label>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="dsl" name="dsl" size="1" formControlName="dsl">
+                                                    <option value="" selected>Select Phone Line</option>
+                                                    <option>Example 1</option>
+                                                    <option>Example 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Phone Service Provider : </label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo2" id="phoneServiceProvider" placeholder="Enter Service Provider" formControlName="phoneServiceProvider">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <h4>Medication Reminder Times : <small style="font-size:9pt !important">(optional)-Program up to 8 daily times for medication reminders</small>                        </h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt1" name="mrt1" size="1" formControlName="mrt1">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt2" name="mrt2" size="1" formControlName="mrt2">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt3" name="mrt3" size="1" formControlName="mrt3">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt4" name="mrt4" size="1" formControlName="mrt4">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt5" name="mrt5" size="1" formControlName="mrt5">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt6" name="mrt6" size="1" formControlName="mrt6">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt7" name="mrt7" size="1" formControlName="mrt7">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <input class="form-control" type="time">
+                        </div>
+                        <div>
+                            <select class="form-control" panelId="demo2" id="mrt8" name="mrt8" size="1" formControlName="mrt8">
+                                                    <option value="" selected>Select -</option>
+                                                    <option>Type 1</option>
+                                                    <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <h4>InActivity Sensor Settings : <small style="font-size: 9pt">Inactivity will be set for two times of windows</small></h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <label for="checkbox1">
+                                        <input name="issCheckBox1" panelId="demo2" id="issCheckBox1" type="checkbox" value="option1" formControlName="issCheckBox1"> Standard (5am to 10am AND 5pm to 10pm)
+                                        </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                                        <input panelId="demo2" id="issCheckBox2" name="issCheckBox2" type="checkbox" value="option2" formControlName="issCheckBox2"> Custom
+                                        </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5"><input type="time" panelId="demo2" id="issAm1" class="form-control" placeholder="12.10" formControlName="issAm1"></div>
+                    <div class="col-md-1"><label>AM to</label></div>
+                    <div class="col-md-5"><input type="time" panelId="demo2" id="issAm2" class="form-control" placeholder="12.10" formControlName="issAm2"></div>
+                    <div class="col-md-1"><label>AM</label></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5"><input type="time" panelId="demo2" id="issPm1" class="form-control" placeholder="12.10" formControlName="issPm1"></div>
+                    <div class="col-md-1"><label>PM to</label></div>
+                    <div class="col-md-5"><input type="time" panelId="demo2" id="issPm2" class="form-control" placeholder="12.10" formControlName="issPm2"></div>
+                    <div class="col-md-1"><label>PM</label></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </div>
+    </form>
+</div>

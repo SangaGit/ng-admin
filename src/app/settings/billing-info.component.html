@@ -1,0 +1,87 @@
+<div class="animated fadeIn">
+    <h1 class="btn btn-info col-md-12 text-center">Billing Information</h1>
+
+    <form [formGroup]="billingInfoForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12 text-center">Select/Add Billing Address</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Select Billing Address :</label>
+                        <div>
+                            <select class="form-control" panelId="demo6" id="billAddress" name="billAddress" size="1" formControlName="billAddress">
+                                                <option selected value="">Select Billing Address</option>
+                                                <option>ECG Account Information Address</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Physical Address :</label>
+                        <div>
+                            <input class="form-control" panelId="demo6" id="billPhysicalAddress" type="text" placeholder="Enter Address" formControlName="billPhysicalAddress">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>APT/Unit# :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo6" id="billAptUnit" placeholder="Enter APT/Unit" formControlName="billAptUnit">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Billing Phone Number : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo6" id="billPhone" placeholder="Enter Phone"
+                                formControlName="billPhone">
+                        </div>
+                        <div *ngIf="billingInfoForm.controls['billPhone'].hasError('required') && (billingInfoForm.controls['billPhone'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter phone number.</div>
+                        <div *ngIf="billingInfoForm.controls['billPhone'].hasError('phone') && billingInfoForm.controls['billPhone'].touched" class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>City :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo6" id="billCity" placeholder="Enter City" formControlName="billCity">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>State :</label>
+                        <div>
+                            <div>
+                                <select class="form-control" panelId="demo6" id="billState" name="billState" size="1" formControlName="billState">
+                                                <option selected value="">Select State</option>
+                                                <option>Arizona</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>ZipCode :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo6" id="billZip" placeholder="Enter Zip" formControlName="billZip">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

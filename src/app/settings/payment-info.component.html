@@ -1,0 +1,122 @@
+<div class="animated fadeIn">
+    <h1 class="btn btn-info col-md-12 text-center">Payment Information</h1>
+
+    <form [formGroup]="paymentInfoForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="card-block">
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>How would you like to pay?(Choose a method pay for your monthly service. If you order extra equipment,
+                            Please indicate how you wish to pay for the accessories)</p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div>
+                        <input type="checkbox" panelId="demo8" id="invoiceOnlyCheckBox" formControlName="invoiceOnlyCheckBox">                        Invoice Only/Bill Me(Not Recommended) : <small> Use only if you want to mail in a check after receiving a bill</small>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">Select/Add Payment</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Please select Payment Option :</label>
+                        <div>
+                            <select class="form-control" panelId="demo8" id="paymentOption" name="paymentOption" size="1" formControlName="paymentOption">
+                                                <option value="" selected>Add New Payment Method</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Payment Name :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo8" id="paymentName" placeholder="Enter Payment Name" formControlName="paymentName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Payment Type :</label>
+                        <div>
+                            <div>
+                                <select class="form-control" panelId="demo8" id="paymentType" name="paymentType" size="1" formControlName="paymentType">
+                                                <option value="" selected>-Select Payment Type</option>
+                                                <option>Type 1</option>
+                                                <option>Type 2</option>
+                                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+
+                    <div class="col-md-3"><input type="checkbox" panelId="demo8" id="visaCheckBox" formControlName="visaCheckBox"> <img src="http://www.credit-card-logos.com/images/visa_credit-card-logos/visa_logo_6.gif"
+                            style="width:80px;height:50px;"><b> Visa</b></div>
+                    <div class="col-md-3"><input type="checkbox" panelId="demo8" id="masterCheckBox" formControlName="masterCheckBox"> <img src="https://gambiabeat.files.wordpress.com/2014/07/mastercard.gif"
+                            style="width:80px;height:50px;"><b> Master</b></div>
+                    <div class="col-md-3"><input type="checkbox" panelId="demo8" id="discoverCheckBox" formControlName="discoverCheckBox">
+                        <img
+                            src="http://rt2qxflpae-flywheel.netdna-ssl.com/wp-content/uploads/2012/09/discover-card.jpg" style="width:80px;height:50px;"><b> Discover</b></div>
+                    <div class="col-md-3"><input type="checkbox" panelId="demo8" id="americanExpCheckBox" formControlName="americanExpCheckBox">                        <img src="http://www.sucursales.com.mx/wp-content/uploads/2014/01/amex-logo.jpg" style="width:80px;height:50px;"><b> Amer Exp</b></div>
+
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div><label>Credit Card Number:</label></div>
+                        <div><input type="text" [textMask]="{mask: ccnMask}" panelId="demo8" id="creditCardNumber" class="form-control"
+                                placeholder="Enter Credit Card Number" formControlName="creditCardNumber"></div>
+                        <div *ngIf="paymentInfoForm.controls['creditCardNumber'].hasError('creditCard') && (paymentInfoForm.controls['creditCardNumber'].touched || submitted)"
+                            class="col-12 alert alert-danger">Your must enter valid credit card number.</div>
+                        <!--<div *ngIf="paymentInfoForm.controls['creditCardNumber'].hasError('number') && paymentInfoForm.controls['creditCardNumber'].touched" class="col-12 alert alert-danger">Your must enter valid credit card number.</div>-->
+                    </div>
+                    <div class="col-md-4">
+                        <div><label>Exp Date :</label></div>
+                        <div><input type="text" [textMask]="{mask: expMask}" panelId="demo8" id="creditCardExpDate" class="form-control"
+                                placeholder="Month/Year" formControlName="creditCardExpDate"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><label>CSV :</label></div>
+                        <div><input type="text" [textMask]="{mask: csvMask}" panelId="demo8" id="creditCardCsv" class="form-control"
+                                placeholder="CSV" formControlName="creditCardCsv"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Name as it appears on card :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo8" id="creditCardName" placeholder="Enter Name" formControlName="creditCardName">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-10">
+                        <span class="validationrequire"></span>
+                        <label for="checkbox1">
+                                        <input panelId="demo8" id="verifyBillingCheckbox" name="verifyBillingCheckbox" type="checkbox" formControlName="verifyBillingCheckbox"> I have verified my billing address and phone here and made
+                                        any changes necessary. My billing information is current and correct.
+                                    </label>
+                        <div *ngIf="paymentInfoForm.controls['verifyBillingCheckbox'].hasError('required') && (paymentInfoForm.controls['verifyBillingCheckbox'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must verify your info.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

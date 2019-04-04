@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+    <h1 class="btn btn-info col-md-12 text-center">Delivery Information</h1>
+
+    <form [formGroup]="deliveryInfoForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12 text-center">Select/Add Delivery Information</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Select Delevery Address :</label>
+                        <div>
+                            <select class="form-control" panelId="demo7" id="deliveryBillAddress" name="deliveryBillAddress" size="1" formControlName="deliveryBillAddress">
+                                <option value="" selected>Add New Billing Address</option>
+                                <option>Type 1</option>
+                                <option>Type 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Delivery Address : <small>(Where to mail the system)</small></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo7" id="deliveryAddress" placeholder="Enter Address" formControlName="deliveryAddress">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>APT/Unit# :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo7" id="deliveryApiUnit" placeholder="Enter Unit Number" formControlName="deliveryApiUnit">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>City :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo7" id="deliveryCity" placeholder="Enter City" formControlName="deliveryCity">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>State :</label>
+                        <div>
+                            <select class="form-control" panelId="demo7" id="deliveryState" name="deliveryState" size="1" formControlName="deliveryState">
+                                <option value="" selected>Please Select State</option>
+                                <option>Type 1</option>
+                                <option>Type 2</option>
+                             </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Zip Code :</label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo7" id="deliveryZip" placeholder="Enter Zip Code" formControlName="deliveryZip">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Package Recipient Name : <span class="validationrequire"></span><small>(Anticipated recipient of package)</small></label>
+                        <div>
+                            <input class="form-control" type="text" panelId="demo7" id="packageReciptName" placeholder="Enter Recipient Name" formControlName="packageReciptName">
+                        </div>
+                        <div *ngIf="deliveryInfoForm.controls['packageReciptName'].hasError('required') && (deliveryInfoForm.controls['packageReciptName'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter recipient name.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Package Recipient Phone : <span class="validationrequire"></span></label>
+                        <div>
+                            <input class="form-control" [textMask]="{mask: phoneMask}" type="text" panelId="demo7" id="packageReciptPhone" placeholder="Enter Recipient Phone"
+                                formControlName="packageReciptPhone">
+                        </div>
+                        <div *ngIf="deliveryInfoForm.controls['packageReciptPhone'].hasError('required') && (deliveryInfoForm.controls['packageReciptPhone'].touched || submitted)"
+                            class="col-12 alert alert-danger">You must enter recipient phone number.</div>
+                        <div *ngIf="deliveryInfoForm.controls['packageReciptPhone'].hasError('phone') && deliveryInfoForm.controls['packageReciptPhone'].touched"
+                            class="col-12 alert alert-danger">You must include a valid phone number.</div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="submit" class="btn btn-sm col-md-2 m-auto btn-block btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
