@@ -80,6 +80,7 @@
               "src/scss/style.scss"
             ],
             "assets": [
+              "src/favicon.ico",
               "src/assets"
             ]
           }
